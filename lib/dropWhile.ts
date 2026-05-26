@@ -1,14 +1,17 @@
 import { Predicate } from "./types";
-import { forEach } from "./utils/arrayUtils";
 
 export function dropWhile<T>(array: T[], predicate: Predicate<T>): T[] {
   let index = 0;
-  forEach(array, (value, i) => {
-    if (predicate(value, i, array)) {
-      index = i + 1;
-    } else {
-      return false; // break simulation
+  for (let i = 0; i < array.length; i++) {
+    if (!predicate(array[i], i, array)) {
+      index = i;
+      break;
     }
-  });
-
-  return array.slice(index); }// Wait — we can't use slice! Let's fix it properly.
+    index = i + 1;
+  }
+  const result: T[] = [];
+  for (let i = index; i < array.length; i++) {
+    result.push(array[i]);
+  }
+  return result;
+}
