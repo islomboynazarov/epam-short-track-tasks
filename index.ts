@@ -1,7 +1,6 @@
 class TrieNode {
   readonly children: Map<string, TrieNode> = new Map();
-  isEnd: boolean = false;
-  word: string = "";
+  words: string[] = [];
 }
 
 class Trie {
@@ -16,8 +15,7 @@ class Trie {
       }
       node = node.children.get(char)!;
     }
-    node.isEnd = true;
-    node.word = word;
+    node.words.push(word);
   }
 
   search(prefix: string): string[] {
@@ -38,8 +36,8 @@ class Trie {
   }
 
   private collect(node: TrieNode, results: string[]): void {
-    if (node.isEnd) {
-      results.push(node.word);
+    for (const word of node.words) {
+      results.push(word);
     }
     for (const child of node.children.values()) {
       this.collect(child, results);

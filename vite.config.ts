@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
-import { resolve } from "path";
 
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "index.ts"),
+      entry: "index.ts",
       formats: ["cjs"],
       fileName: () => "index.js",
     },
