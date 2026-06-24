@@ -1,0 +1,11 @@
+When I first read the task, I understood that unlike previous tasks, 
+I wasn't writing implementation code — I was writing tests for code that already existed. 
+This was a different mindset. Instead of thinking "how do I build this", I had to think 
+"how do I verify this works correctly and breaks in the right way".
+
+Working through this task shifted how I think about code — writing tests forced me to read 
+each function not as something to build but as something to break, and that perspective 
+change revealed details I would have missed otherwise: that async errors need `await` to be 
+caught properly, that random behavior makes tests flaky without mocking, that throttle caches 
+results across tests unless explicitly cancelled, and that the real challenge of testing isn't
+knowing the Jest API but understanding the code deeply enough to know what assumptions to verify and what edge cases to cover.
