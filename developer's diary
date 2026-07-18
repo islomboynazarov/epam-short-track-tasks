@@ -1,0 +1,9 @@
+Developer's Diary
+
+Writing tests for the Pokemon search app felt like reading my own code from the outside — I had to stop thinking about how each 
+component works internally and start thinking about what a user would actually see and do, which meant testing rendered text, 
+button clicks, and input changes rather than state variables or lifecycle methods. The hardest part was mocking the API 
+correctly — understanding that `vi.spyOn` intercepts the actual module exports and that each test needs its own mock setup to stay 
+isolated took some trial and error. The coverage report at the end was satisfying: 98% statements with every component fully covered, 
+which came not from chasing numbers but from genuinely thinking through every scenario — empty states, error responses, localStorage 
+reads and writes, and the ErrorBoundary catching crashes.
