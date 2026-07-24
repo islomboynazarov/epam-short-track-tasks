@@ -18,3 +18,15 @@ export interface AppState {
   isLoading: boolean;
   error: string | null;
 }
+
+export interface PokemonDetailFull {
+  name: string;
+  id: number;
+  height: number;
+  weight: number;
+  types: string[];
+  abilities: string[];
+  sprites: {
+    front_default: string;
+  };
+}
