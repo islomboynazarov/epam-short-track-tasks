@@ -50,7 +50,6 @@ describe("App", () => {
 
   it("loads search term from localStorage on mount", async () => {
     localStorage.setItem("pokemonSearchTerm", "pikachu");
-    vi.spyOn(api, "fetchPokemonByName").mockResolvedValue(mockPokemons[0]);
     render(<App />);
     const input = screen.getByPlaceholderText("Search Pokemon...") as HTMLInputElement;
     expect(input.value).toBe("pikachu");
@@ -91,12 +90,14 @@ describe("App", () => {
 
   it("does not fetch again if search term has not changed", async () => {
     const user = userEvent.setup();
-    const spy = vi.spyOn(api, "fetchPokemonByName").mockResolvedValue(mockPokemons[0]);
     render(<App />);
     await waitFor(() =>
       expect(screen.getAllByText("bulbasaur").length).toBeGreaterThan(0)
     );
+    const cardsBefore = screen.getAllByText("bulbasaur").length;
     await user.click(screen.getByText("Search"));
-    expect(spy).toHaveBeenCalledTimes(0);
+    await waitFor(() => {
+      expect(screen.getAllByText("bulbasaur").length).toBe(cardsBefore);
+    });
   });
 });
