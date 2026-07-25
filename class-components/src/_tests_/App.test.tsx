@@ -13,31 +13,38 @@ const mockPokemons = [
   },
 ];
 
+const mockListResponse = {
+  results: [{ name: "bulbasaur" }],
+  next: null,
+};
+
 beforeEach(() => {
   localStorage.clear();
   vi.restoreAllMocks();
   vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.spyOn(global, "fetch").mockResolvedValue({
+    ok: true,
+    json: async () => mockListResponse,
+  } as Response);
+  vi.spyOn(api, "fetchPokemonByName").mockResolvedValue(mockPokemons[0]);
 });
 
 describe("App", () => {
   it("renders search input and button", async () => {
-    vi.spyOn(api, "fetchAllPokemons").mockResolvedValue(mockPokemons);
     render(<App />);
     expect(screen.getByPlaceholderText("Search Pokemon...")).toBeInTheDocument();
     expect(screen.getByText("Search")).toBeInTheDocument();
   });
 
   it("shows loading spinner on initial load", async () => {
-    vi.spyOn(api, "fetchAllPokemons").mockResolvedValue(mockPokemons);
     render(<App />);
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
-  it("fetches all pokemons on initial load", async () => {
-    vi.spyOn(api, "fetchAllPokemons").mockResolvedValue(mockPokemons);
+  it("fetches pokemons on initial load", async () => {
     render(<App />);
     await waitFor(() => {
-      expect(screen.getByText("bulbasaur")).toBeInTheDocument();
+      expect(screen.getAllByText("bulbasaur").length).toBeGreaterThan(0);
     });
   });
 
@@ -59,19 +66,22 @@ describe("App", () => {
   });
 
   it("shows error message when API fails", async () => {
-    vi.spyOn(api, "fetchAllPokemons").mockRejectedValue(new Error("API Error"));
+    vi.spyOn(global, "fetch").mockResolvedValue({
+      ok: false,
+      status: 500,
+    } as Response);
     render(<App />);
     await waitFor(() => {
-      expect(screen.getByText("API Error")).toBeInTheDocument();
+      expect(screen.getByText(/Error: 500/)).toBeInTheDocument();
     });
   });
 
   it("saves search term to localStorage when search is performed", async () => {
     const user = userEvent.setup();
-    vi.spyOn(api, "fetchAllPokemons").mockResolvedValue(mockPokemons);
-    vi.spyOn(api, "fetchPokemonByName").mockResolvedValue(mockPokemons[0]);
     render(<App />);
-    await waitFor(() => screen.getByText("bulbasaur"));
+    await waitFor(() =>
+      expect(screen.getAllByText("bulbasaur").length).toBeGreaterThan(0)
+    );
     const input = screen.getByPlaceholderText("Search Pokemon...");
     await user.clear(input);
     await user.type(input, "pikachu");
@@ -81,10 +91,12 @@ describe("App", () => {
 
   it("does not fetch again if search term has not changed", async () => {
     const user = userEvent.setup();
-    const spy = vi.spyOn(api, "fetchAllPokemons").mockResolvedValue(mockPokemons);
+    const spy = vi.spyOn(api, "fetchPokemonByName").mockResolvedValue(mockPokemons[0]);
     render(<App />);
-    await waitFor(() => screen.getByText("bulbasaur"));
+    await waitFor(() =>
+      expect(screen.getAllByText("bulbasaur").length).toBeGreaterThan(0)
+    );
     await user.click(screen.getByText("Search"));
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(0);
   });
 });
