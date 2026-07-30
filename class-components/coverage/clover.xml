@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1784940731401" clover="3.2.0">
-  <project timestamp="1784940731401" name="All files">
-    <metrics statements="122" coveredstatements="110" conditionals="46" coveredconditionals="40" methods="44" coveredmethods="38" elements="212" coveredelements="188" complexity="0" loc="122" ncloc="122" packages="4" files="17" classes="17"/>
+<coverage generated="1785406850067" clover="3.2.0">
+  <project timestamp="1785406850067" name="All files">
+    <metrics statements="157" coveredstatements="146" conditionals="60" coveredconditionals="53" methods="62" coveredmethods="56" elements="279" coveredelements="255" complexity="0" loc="157" ncloc="157" packages="6" files="20" classes="20"/>
     <package name="src">
       <metrics statements="23" coveredstatements="16" conditionals="6" coveredconditionals="4" methods="8" coveredmethods="5"/>
       <file name="App.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/App.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="86" count="8" type="stmt"/>
+        <line num="114" count="8" type="stmt"/>
       </file>
       <file name="api.ts" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/api.ts">
         <metrics statements="21" coveredstatements="15" conditionals="6" coveredconditionals="4" methods="7" coveredmethods="4"/>
@@ -41,11 +41,17 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="50" coveredstatements="49" conditionals="17" coveredconditionals="17" methods="24" coveredmethods="23"/>
+      <metrics statements="71" coveredstatements="71" conditionals="23" coveredconditionals="22" methods="31" coveredmethods="31"/>
       <file name="Card.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/components/Card.tsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="31" count="13" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="60" count="18" type="stmt"/>
+        <line num="61" count="18" type="stmt"/>
+        <line num="63" count="18" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="68" count="18" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
       </file>
       <file name="CardList.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/components/CardList.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
@@ -96,9 +102,27 @@
         <line num="19" count="2" type="stmt"/>
         <line num="21" count="10" type="stmt"/>
       </file>
+      <file name="Flyout.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/components/Flyout.tsx">
+        <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="4" count="15" type="stmt"/>
+        <line num="6" count="15" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="23" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="5" type="stmt"/>
+      </file>
       <file name="Navigation.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/components/Navigation.tsx">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="8" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
       </file>
       <file name="Pagination.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/components/Pagination.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
@@ -118,6 +142,18 @@
       <file name="Spinner.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/components/Spinner.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="16" count="16" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.context">
+      <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="4"/>
+      <file name="ThemeContext.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/context/ThemeContext.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="4"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="14" type="stmt"/>
+        <line num="16" count="14" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="14" type="stmt"/>
+        <line num="36" count="14" type="stmt"/>
       </file>
     </package>
     <package name="src.hooks">
@@ -185,6 +221,20 @@
       <file name="NotFoundPage.tsx" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/pages/NotFoundPage.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.store">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+      <file name="selectedStore.ts" path="/Users/islomboynazarov/Desktop/epam-short-track-tasks/class-components/src/store/selectedStore.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
       </file>
     </package>
   </project>
