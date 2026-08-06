@@ -100,7 +100,40 @@
 
 // export default App;
 
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import ErrorBoundary from "./components/ErrorBoundary";
+// import ErrorButton from "./components/ErrorButton";
+// import Navigation from "./components/Navigation";
+// import MainPage from "./pages/MainPage";
+// import AboutPage from "./pages/AboutPage";
+// import NotFoundPage from "./pages/NotFoundPage";
+// import Flyout from "./components/Flyout";
+// import { ThemeProvider } from "./context/ThemeContext";
+
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <ThemeProvider>
+//         <ErrorBoundary>
+//           <Navigation />
+//           <Routes>
+//             <Route path="/" element={<MainPage />} />
+//             <Route path="/about" element={<AboutPage />} />
+//             <Route path="*" element={<NotFoundPage />} />
+//           </Routes>
+//           <Flyout />
+//           <ErrorButton />
+//         </ErrorBoundary>
+//       </ThemeProvider>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ErrorButton from "./components/ErrorButton";
 import Navigation from "./components/Navigation";
@@ -110,22 +143,32 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Flyout from "./components/Flyout";
 import { ThemeProvider } from "./context/ThemeContext";
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Number(import.meta.env.VITE_CACHE_TTL) || 300000,
+    },
+  },
+});
+
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider>
-        <ErrorBoundary>
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-          <Flyout />
-          <ErrorButton />
-        </ErrorBoundary>
-      </ThemeProvider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <ThemeProvider>
+          <ErrorBoundary>
+            <Navigation />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+            <Flyout />
+            <ErrorButton />
+          </ErrorBoundary>
+        </ThemeProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
