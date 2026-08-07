@@ -147,6 +147,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: Number(import.meta.env.VITE_CACHE_TTL) || 300000,
+      retry: false,
     },
   },
 });
