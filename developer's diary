@@ -1,0 +1,9 @@
+Working with TanStack Query felt like handing off a job I'd been doing manually — before, every component had its own `useEffect` 
+with `isLoading` and `error` state variables, and every fetch had to be carefully set up and torn down. TanStack Query replaced all 
+of that with a single `useQuery` call that handles loading, error, caching, and refetching automatically, which made the components 
+dramatically simpler. The most important concept to understand was the query key — it's the cache identifier, so `["pokemon", "page", 1]` 
+and `["pokemon", "page", 2]` are two separate cache entries, meaning navigating back to page 1 after visiting page 2 returns instantly 
+from cache without a network request. The manual refresh button was straightforward once I understood `invalidateQueries` — it clears 
+the cache entry for the current query key and forces a fresh fetch on the next render. The hardest part was the tests — TanStack Query 
+retries failed requests 3 times by default, which caused the error test to time out repeatedly. The fix was setting `retry: false` in the 
+`QueryClient` configuration, which also makes more sense for a search app where retrying a typo won't produce a different result.
