@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  },
+  "search": {
+    "placeholder": "Search Pokemon...",
+    "button": "Search",
+    "refresh": "Refresh",
+    "noResults": "No results found.",
+    "loading": "Loading..."
+  },
+  "about": {
+    "title": "About",
+    "description": "This is a Pokemon search app built with Next.js, TypeScript, and TanStack Query.",
+    "author": "Author: Islom Boynazarov",
+    "link": "RS School React Course"
+  },
+  "flyout": {
+    "selected": "item(s) selected",
+    "unselectAll": "Unselect all",
+    "download": "Download"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Page not found.",
+    "back": "Go back to home"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Haqida"
+  },
+  "search": {
+    "placeholder": "Pokemon qidirish...",
+    "button": "Qidirish",
+    "refresh": "Yangilash",
+    "noResults": "Hech narsa topilmadi.",
+    "loading": "Yuklanmoqda..."
+  },
+  "about": {
+    "title": "Haqida",
+    "description": "Bu Next.js, TypeScript va TanStack Query yordamida qurilgan Pokemon qidiruv ilovasi.",
+    "author": "Muallif: Islom Boynazarov",
+    "link": "RS School React Kursi"
+  },
+  "flyout": {
+    "selected": "ta tanlandi",
+    "unselectAll": "Barchasini bekor qilish",
+    "download": "Yuklab olish"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Sahifa topilmadi.",
+    "back": "Bosh sahifaga qaytish"
+  }
+}
