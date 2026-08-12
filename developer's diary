@@ -1,0 +1,14 @@
+Developer's Diary:
+
+Migrating from Vite to Next.js felt less like a rewrite and more like a shift in mental model — instead of thinking about one bundle 
+that runs entirely in the browser, you start thinking about which parts of the app need to run on the server and which need to run 
+on the client. The biggest conceptual shift was understanding server components: the About page became a pure server component with 
+no "use client" directive, which means it renders to HTML on the server at build time and ships zero JavaScript to the browser for 
+that page. The search page stayed a client component because it needs useState, useSearchParams, and TanStack Query hooks. Setting up 
+next-intl was the most configuration-heavy part — it required a middleware file, routing config, request config, translation JSON files, 
+and a createNavigation wrapper, but once everything connected the language switcher worked instantly. The CSV generation moved from 
+browser APIs (Blob, URL.createObjectURL) to a server route handler that returns a proper HTTP response with Content-Type: text/csv 
+headers, which is cleaner and more secure. The hardest debugging moment was the 404 on /en which turned out to be a missing page.tsx 
+file in the [locale] folder — Next.js file-based routing is unforgiving about file placement.
+
+
