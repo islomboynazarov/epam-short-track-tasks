@@ -25,5 +25,13 @@
     "title": "404",
     "message": "Sahifa topilmadi.",
     "back": "Bosh sahifaga qaytish"
+  },
+  "ai": {
+    "explain": "AI bilan tushuntirish",
+    "loading": "Tushuntirish yaratilmoqda...",
+    "retry": "Qayta urinish",
+    "regenerate": "Qayta yaratish",
+    "disclaimer": "Bu tushuntirish AI tomonidan yaratilgan va noto'g'ri bo'lishi mumkin.",
+    "error": "Tushuntirish yaratishda xatolik. Iltimos, qayta urining."
   }
 }

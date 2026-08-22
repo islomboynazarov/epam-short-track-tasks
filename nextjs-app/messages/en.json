@@ -25,5 +25,13 @@
     "title": "404",
     "message": "Page not found.",
     "back": "Go back to home"
+  },
+  "ai": {
+    "explain": "Explain this Pokemon with AI",
+    "loading": "Generating explanation...",
+    "retry": "Retry",
+    "regenerate": "Regenerate",
+    "disclaimer": "This explanation is AI-generated and may be inaccurate.",
+    "error": "Failed to generate explanation. Please try again."
   }
 }
