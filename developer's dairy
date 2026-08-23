@@ -1,0 +1,14 @@
+Working on the AI tools task forced me to think about two completely separate things at once — using AI as a development assistant 
+while also building a feature that calls AI at runtime — and keeping those two roles distinct in my head took some adjustment. 
+Using Copilot Plan mode to inspect the project and propose an implementation plan was genuinely useful for the initial structure, 
+but I had to push back on several suggestions: it initially proposed making the Gemini call directly from the client component which 
+would have exposed the API key in the browser bundle, and it suggested using `dangerouslySetInnerHTML` to render the explanation which 
+is explicitly penalized. Both of those I rejected and implemented differently — the Gemini call goes through a server-side route handler 
+with `import 'server-only'`, and the explanation renders as plain text. The security model for the API key took the most careful thought:
+the difference between `GEMINI_API_KEY` and `NEXT_PUBLIC_GEMINI_API_KEY` is not just a naming convention — Next.js literally inlines any 
+`NEXT_PUBLIC_` variable into the client bundle at build time, making it readable by anyone who opens the browser devtools. The prompt 
+design was more nuanced than I expected — simply sending the Pokemon data and asking for an explanation wasn't enough. I had to explicitly 
+tell the model to treat the item data as data rather than instructions (to prevent prompt injection), specify the output language using 
+the active locale, set a word limit, and instruct it not to invent facts beyond what was supplied. The reuse logic in the detail panel — 
+caching the explanation for the same Pokemon ID and locale combination — was a small but important detail that prevents the app from 
+burning through the free tier quota every time the component re-renders.
